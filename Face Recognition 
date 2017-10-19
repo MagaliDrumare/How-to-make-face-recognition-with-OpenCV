@@ -1,0 +1,74 @@
+Viola-Jones algorithm X
+Haar-Like feature X
+Integral image X
+Training classifier X
+Adaptive Boosting X
+Cascading
+
+Video 1- Viola-Jones algorithm 
+2001 cv2 
+2 parts : Training , Detection 
+GREYSCALE 
+Detection / Looking for some feature of the face : 2 eyes, 1 noise, 1 mouse. Scan the image, create several green boxes of detection. 
+
+Video 2- Haar-like Features 
+-Edge features 
+-Line features 
+-Four rectangle features 
+
+Look at in the GREYSCALE FEATURE 
+Mouse = Line features 
+Eyebrow = Edge features 
+Noise (both size) = Edge feartures 
+Eyes = Line features 
+
+Edge features 
+~ 0 withe (0.1, 0.2, 0.3.....)
+~1 black (0.4, 0.6, 0.7.......)
+average intensity of all the pixels 
+W=0.166
+B=0.568 
+soustract B-W =0.402 
+if B-W ~0.402 can be a potention noise 
+
+Video 3- Integral Image 
+Same size of the initial image 
+Rectangle: everything left 
+Sum all the value on the left 
+4 operations against 12 
+
+Video 4-Training Classifiers 
+Which features are important? 
+Reduce the size of the images : 24x24 px dimension 
+labbeled as Face image / Non-Face Images (high rate of false postive identigy faces but they are not faces)
+
+Video 5- Why Adaboost ? 
+Too much features to detect 
+180.000 + features in a 24X24 px 
+huge number 
+180.000 for all the images in the training images.....nightmare, too long 
+Add weak classifier to make a string classifier. 
+Increase the importance of the images that was not well classified. 
+Minimum the error rate. Optimize the rate of good classification. 
+
+Video 6- The Cascade 
+Step 1 : If the top five features are not presents we reject Sub-Window
+Next 12 features at step 2 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
