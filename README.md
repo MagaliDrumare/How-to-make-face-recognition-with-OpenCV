@@ -7,7 +7,7 @@
 * GitHub de OpenCV pour trouver les haarcascades.xml : https://github.com/opencv/opencv/tree/master/data/haarcascades
 
 #### A retenir : 
-```
+```python
 # Importing the libraries / importer OpenCV 
 import cv2 
 
