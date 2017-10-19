@@ -19,16 +19,21 @@ smile_cascade = cv2.CascadeClassifier('haarcascade_smile.xml') # smile
 # Defining a function that will do the detections / Détection
 def detect(gray, frame):
     faces = face_cascade.detectMultiScale(gray, 1.3, 5) 
-    # la détection d'effectue sur l'image en noir et blanc, 1.3 == coef of image size reduction , 5 == neighbors. 
+    # la détection d'effectue sur l'image en noir et blanc
+    # 1.3 == coef of image size reduction , 5 == neighbors. 
+    
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2) # tracer un rectangle autour du visage détecté. 
-        # (x, y), (x+w, y+h) coordonnées du rectangle ; couleur du rectangle  (255, 0, 0), épaisseur du rectangle 2.
+        # (x, y), (x+w, y+h) coordonnées du rectangle ; 
+        #couleur du rectangle  (255, 0, 0), épaisseur du rectangle 2.
+        
         roi_gray = gray[y:y+h, x:x+w] # zone du visage détectée photo en noir et blanc 
         roi_color = frame[y:y+h, x:x+w] # zone du visage détectée en couleur
         eyes = eye_cascade.detectMultiScale(roi_gray, 1.1, 22)
         # la détection des yeux s'effectue sur la zone du visage en noir et blanc roi_gray.
         for (ex, ey, ew, eh) in eyes:
-            cv2.rectangle(roi_color, (ex, ey), (ex+ew, ey+eh), (0, 255, 0), 2) #tracer un rectangle autour de l'oeil détecté.
+            cv2.rectangle(roi_color, (ex, ey), (ex+ew, ey+eh), (0, 255, 0), 2) 
+            #tracer un rectangle autour de l'oeil détecté.
         smiles = smile_cascade.detectMultiScale(roi_gray, 1.7, 22)
         # la détection du sourire s'effectue sur la zone du visage en noir et blanc roi-gray.
         for (sx, sy, sw, sh) in smiles:
