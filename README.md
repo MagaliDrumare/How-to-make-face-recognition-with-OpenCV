@@ -37,7 +37,8 @@ def detect(gray, frame):
         smiles = smile_cascade.detectMultiScale(roi_gray, 1.7, 22)
         # la détection du sourire s'effectue sur la zone du visage en noir et blanc roi-gray.
         for (sx, sy, sw, sh) in smiles:
-            cv2.rectangle(roi_color, (sx, sy), (sx+sw, sy+sh), (0, 0, 255), 2)# tracer un rectagle autour du sourire. 
+            cv2.rectangle(roi_color, (sx, sy), (sx+sw, sy+sh), (0, 0, 255), 2)
+            # tracer un rectangle autour du sourire. 
     return frame # output est l'image en couleur avec les éléments de détection identifiés. 
 
 # Doing some Face Recognition with the webcam
@@ -45,8 +46,8 @@ video_capture = cv2.VideoCapture(0) # connexion de la webcam.
 while True:
     _, frame = video_capture.read() #lecture des images de la vidéo
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) # conversion des images en noir et blanc
-    canvas = detect(gray, frame) # la method detect prend en input grey et frame et produit comme output canvas
-    #l'image en couleur avec les élementys de détection identifiés. 
+    canvas = detect(gray, frame) # la méthode detect prend en input grey et frame et produit comme output canvas
+    #l'image en couleur avec les élements de détection identifiés. 
     cv2.imshow('Video', canvas) # générer la vidéo avec les images de canvas. 
     if cv2.waitKey(1) & 0xFF == ord('q'): # cliquer sur q pour fermer la webcam 
         break
